@@ -1,11 +1,9 @@
 <template>
 
-
   <div id="app">
     <app-header/>
     <memo-app/>
   </div>
-
 
 </template>
 
@@ -14,7 +12,6 @@
 import AppHeader from './components/AppHeader';
 import MemoApp from './components/MemoApp';
 
-
 export default {
   name: 'app',
   components: { 
@@ -22,7 +19,6 @@ export default {
     MemoApp
   }
 }
-
 </script>
 
 

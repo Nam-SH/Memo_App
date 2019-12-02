@@ -29,6 +29,8 @@
       },
       addMemo() {
         const { title, content } = this
+
+        // 고유 ID를 불러온다.
         const id = new Date().getTime()
         if (title === '') return
         this.$emit('addMemo', { id, title, content })

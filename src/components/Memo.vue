@@ -1,21 +1,59 @@
 <template>
   <li class="memo-item">
     <strong> {{ memo.title }} </strong>
-    <p> {{ memo.content }} </p>
-    <button type="button"><i class="fas fa-times"></i></button>
+
+    <p @dblclick="handleDblClick"> 
+      <template v-if="!isEditing"> {{ memo.content }} </template>  
+      <input v-else type="text" ref="content" :value="memo.content" @keydown.enter="updateMemo"/>
+    </p>
+    <button type="button" @click="deleteMemo"><i class="fas fa-times"></i></button>
   </li>
 </template>
 
+
 <script>
   export default {
+    // beforeUpdate () {
+    //   console.log("beforeUpdate => ", this.$refs.content)
+    // },
+    // updated () {
+    //     console.log("Updated => ", this.$refs.content)
+    // },
     name: "Memo",
+    data () {
+      return {
+        isEditing : false
+      }
+    },
     props: {
       memo: {
         type: Object
       }
+    },
+    methods: {
+      deleteMemo () {
+        const id = this.memo.id
+        this.$emit('deleteMemo', id)
+      },
+      handleDblClick () {
+        this.isEditing = true
+        // console.log('this.$refs.content', this.$refs.content)
+        this.$nextTick(() => {
+          this.$refs.content.focus()
+        })
+      },
+      updateMemo(e) {
+        const id = this.memo.id
+        // console.log(e)
+        const content = e.target.value.trim()
+        if (content === '') return
+        this.$emit('updateMemo', { id, content })
+        this.isEditing = false
+      }
     }
   }
 </script>
+
 
 <style>
 
@@ -54,4 +92,10 @@
   color: #666;
 }
 
+.memo-item p input[type="text"] {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: inherit;
+  border: 1px solid #999;
+}
 </style>
