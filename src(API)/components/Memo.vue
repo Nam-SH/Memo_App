@@ -4,7 +4,7 @@
 
     <p @dblclick="handleDblClick"> 
       <template v-if="!isEditing"> {{ memo.content }} </template>  
-      <input v-else type="text" ref="content" :value="memo.content" @keydown.enter="updateMemo"/>
+      <input v-else type="text" ref="content" :value="memo.content" @blur="handleBlur" @keydown.enter="updateMemo"/>
     </p>
     <button type="button" @click="deleteMemo"><i class="fas fa-times"></i></button>
   </li>
@@ -49,6 +49,9 @@
         if (content === '') return
         this.$emit('updateMemo', { id, content })
         this.isEditing = false
+      },
+      handleBlur () {
+        this.isEditing = false;
       }
     }
   }
