@@ -13,12 +13,6 @@
 
 <script>
   export default {
-    // beforeUpdate () {
-    //   console.log("beforeUpdate => ", this.$refs.content)
-    // },
-    // updated () {
-    //     console.log("Updated => ", this.$refs.content)
-    // },
     name: "Memo",
     data () {
       return {
@@ -35,13 +29,16 @@
         const id = this.memo.id
         this.$emit('deleteMemo', id)
       },
+
       handleDblClick () {
         this.isEditing = true
-        // console.log('this.$refs.content', this.$refs.content)
+
+        //  this.$refs.content가 update된 후에 실행이 되게끔 조작함
         this.$nextTick(() => {
           this.$refs.content.focus()
         })
       },
+
       updateMemo(e) {
         const id = this.memo.id
         // console.log(e)
@@ -50,6 +47,7 @@
         this.$emit('updateMemo', { id, content })
         this.isEditing = false
       },
+      
       handleBlur () {
         this.isEditing = false;
       }

@@ -693,3 +693,94 @@ export default {
 
 
 ## 3. 서버와 API 연동
+
+### 3.0 API 서버 다운로드
+
+- https://github.com/CanDoVueJS/RESTful-api-server에 접속 후 `git clone`을 하거나, 
+- `memo-application`와 같은 위치에 있는 `RESTful-api-server`를 사용한다.
+- `cd RESTful-api-server`  =>  클론받은 프로젝트의 디렉토리로 이동한다.
+- `npm install`  =>  프로젝트에서 사용할 패키지를 설치한다.
+- `npm install -g sequelize-cli`  =>  Sequelize CLI를 전역으로 설치
+- `PORT=8000 npm run dev`  =>  서버를 실행한다.
+
+
+
+### 3.1 CRUD - Create
+
+#### 3.1.1 
+
+```vue
+
+```
+
+#### 3.1.2
+
+```vue
+
+```
+
+
+
+### 3.2 CRUD - Read
+
+#### 3.2.1 
+
+```vue
+
+```
+
+#### 3.2.2
+
+```vue
+
+```
+
+
+
+### 3.3 CRUD - Update
+
+#### 3.3.1 
+
+```vue
+
+```
+
+#### 3.3.2
+
+```vue
+
+```
+
+#### 3.3.3 
+
+```vue
+
+```
+
+
+
+### 3.4 CRUD - Delete
+
+#### 3.4.1 
+
+```vue
+
+```
+
+#### 3.4.2
+
+```vue
+
+```
+
+## 
+
+## 4. 결과 모습
+
+### 4.1 
+
+### 4.2 
+
+### 4.3 
+
+### 4.4 
