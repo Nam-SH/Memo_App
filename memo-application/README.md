@@ -372,7 +372,7 @@ export default {
 
 ### 2.2. CRUD - Read
 
-#### 2.2.1 `Memo.vue`의 `template`와 `script`
+#### 2.2.1 `Memo.vue`의 `template`와 `script` 부분
 
 ```vue
 // src/components/Memo.vue
@@ -399,7 +399,7 @@ export default {
 </script>
 ```
 
-##### 2.2.1.1
+##### 2.2.1.1 `Memo.vue`의 `style`부분
 
 ```vue
 // src/components/Memo.vue
@@ -415,7 +415,6 @@ export default {
   background-color: #fff;
   list-style: none;
 }
-
 .memo-item button {
   background: none;
   position: absolute;
@@ -425,7 +424,6 @@ export default {
   color: #e5e5e5;
   border: 0;
 }
-
 .memo-item strong {
   display: block;
   margin-bottom: 12px;
@@ -433,14 +431,12 @@ export default {
   font-weight: normal;
   word-break: break-all;
 }
-
 .memo-item p {
   margin: 0;
   font-size: 14px;
   line-height: 22px;
   color: #666;
 }
-
 .memo-item p input[type="text"] {
   box-sizing: border-box;
   width: 100%;
@@ -452,7 +448,7 @@ export default {
 
 
 
-#### 2.2.2
+#### 2.2.2 `MemoApp.vue`의 `template`부분
 
 ```vue
 // src/components/MemoApp.vue
@@ -472,7 +468,7 @@ export default {
 </template>
 ```
 
-##### 2.2.2.1
+##### 2.2.2.1 `MemoApp.vue`의 `style`부분
 
 ```vue
 // src/components/MemoApp.vue
@@ -489,7 +485,7 @@ export default {
 
 ### 2.3. CRUD - Delete
 
-#### 2.3.1 
+#### 2.3.1 `MemoApp.vue`의 `template`부분
 
 ```vue
 // src/components/Memo.vue
@@ -505,7 +501,7 @@ export default {
 </template>
 ```
 
-#### 2.3.2 
+#### 2.3.2  `Memo.vue`의 `style`부분
 
 ```vue
 // src/components/Memo.vue
@@ -532,7 +528,7 @@ export default {
 </script>
 ```
 
-#### 2.3.3
+#### 2.3.3 `MemoApp.vue`의 `template`부분
 
 ```vue
 // src/components/MemoApp.vue
@@ -552,7 +548,7 @@ export default {
 </template>
 ```
 
-#### 2.3.4
+#### 2.3.4 `MemoApp.vue`의 `script`부분
 
 ```vue
 // src/components/MemoApp.vue
@@ -570,7 +566,6 @@ export default {
     data() {
       ...
     },
-
     created() {
       ...
     },
@@ -581,7 +576,6 @@ export default {
       storeMemo() {
         ...
       },
-          
       deleteMemo(id) {
         // findIndex() 메서드는 주어진 판별 함수를 만족하는 배열의 첫 번째 요소에 대한 인덱스를 반환한다
         const targetIndex = this.memos.findIndex(v => v.id === id)
@@ -603,7 +597,7 @@ export default {
 
 ### 2.4. CRUD - Update
 
-#### 2.4.1 
+#### 2.4.1 `MemoApp.vue`의 `template`부분
 
 ```vue
 // src/components/MemoApp.vue
@@ -631,19 +625,15 @@ export default {
 </template>
 ```
 
-#### 2.4.2 
+#### 2.4.2 `MemoApp.vue`의 `script`부분
 
 ```vue
 // src/components/MemoApp.vue
 
 <script>
   export default {
-    // beforeUpdate () {
-    //   console.log("beforeUpdate => ", this.$refs.content)
-    // }, //=> undefined
-    // updated () {
-    //     console.log("Updated => ", this.$refs.content)
-    // },
+    // beforeUpdate () { console.log("beforeUpdate => ", this.$refs.content) }, //=> undefined
+    // updated () { console.log("Updated => ", this.$refs.content) },
     name: "Memo",
     data () {
       // 현재 메모에 대한 수정 상태에 대한 데이터를 저장한다.
@@ -698,11 +688,7 @@ export default {
 </script>
 ```
 
-#### 2.4.3
 
-```vue
-
-```
 
 
 
