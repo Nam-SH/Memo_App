@@ -707,13 +707,13 @@ export default {
 
 ### 3.1 CRUD - Create
 
-#### 3.1.1 
+#### 3.1.1 `MemoApp.vue`의 `script`부분
 
 ```vue
 
 ```
 
-#### 3.1.2
+#### 3.1.2`MemoForm.vue`의 `script`부분
 
 ```vue
 
