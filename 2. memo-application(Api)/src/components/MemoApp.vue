@@ -43,16 +43,30 @@
         memoAPICore.post('/', payload)
           .then(res => {
             this.memos.push(res.data)
+
+            // 메모의 갯수가 변동되면, change이벤트를 호출한다.
             this.$emit('change', this.memos.length)
+          })
+          .catch((err) => {
+            console.log(`${err}가 발생했어요...ㅎ`)
           })
       },
 
       deleteMemo (id) {
         const targetIndex = this.memos.findIndex(v => v.id === id)
+
+        // 1. 인자로 받은 메모id를 사용하여 deleteAPI를 호출
         memoAPICore.delete(`${id}`)
           .then(() => {
+
+            // 요청이 정상적으로 처리됬다면 memos배열에서 해당 메모를 삭제한다.
             this.memos.splice(targetIndex, 1)
+
+            // 메모의 갯수가 변동되면, change이벤트를 호출한다.
             this.$emit('change', this.memos.length)
+          })
+          .catch((err) => {
+            console.log(`${err}가 떴습니다...ㅎ`)
           })
       },
 
@@ -64,6 +78,9 @@
           .then(() => {
             this.memos.splice(targetIndex, 1, { ...targetMemo, content })
           })  
+          .catch((err) => {
+            console.log(`${err}가 떴습니다...ㅎ`)
+          })
       },
     }
   }

@@ -25,6 +25,7 @@
       }
     },
     methods: {
+      
       deleteMemo () {
         const id = this.memo.id
         this.$emit('deleteMemo', id)
@@ -47,7 +48,10 @@
         this.$emit('updateMemo', { id, content })
         this.isEditing = false
       },
-      
+
+      // input태그를 마우스로 클릭하여 입력상태로 만든것을 포커스(focus)를 얻었다고 한다. 그리고 입력상태를 떠난것을 포커스가 벗어났다고(blur) 한다.
+      // 즉 blur은 엘리먼트의 포커스가 해제되었을때 발생한다.
+      // focus가 해제되었을 경우에 수정이 안되게끔 설정한다.
       handleBlur () {
         this.isEditing = false;
       }
@@ -67,7 +71,6 @@
   background-color: #fff;
   list-style: none;
 }
-
 .memo-item button {
   background: none;
   position: absolute;
@@ -77,7 +80,6 @@
   color: #e5e5e5;
   border: 0;
 }
-
 .memo-item strong {
   display: block;
   margin-bottom: 12px;
@@ -85,14 +87,12 @@
   font-weight: normal;
   word-break: break-all;
 }
-
 .memo-item p {
   margin: 0;
   font-size: 14px;
   line-height: 22px;
   color: #666;
 }
-
 .memo-item p input[type="text"] {
   box-sizing: border-box;
   width: 100%;

@@ -28,6 +28,10 @@
         this.title = this.content = ''
       },
       addMemo() {
+        
+        // API 서버에서 새로 등록된 메모 데이터의 ID를 생성하기 때문에 임이의 ID를 클라이언트에서 생성할 필요가 없다.
+        // const id = new Date().getTime()
+
         const { title, content } = this
 
         if (title === '') return

@@ -9,8 +9,7 @@
 - 해당 프로젝트는 `vue`를 활용해 메모 어플리케이션을 만다는 것이다.
 - `Bootstrap`과 `css`를 활용해 디자인을 구성하였다.
 - 카멜케이스(`camelCase`), 파스칼케이스(`PascalCase`), 스네이크 케이스(`snake_case`), 케밥 케이스(`kebab-case`) 중 `convention`인 케밥 케이스(`kebab-case`)를 사용하였다.
-
-
+- 데이터를 저장하는 곳은 서버의 Storage를 사용하였다.
 
 
 
@@ -207,7 +206,7 @@ export default {
         │      MemoApp.vue
         │      MemoForm.vue
         │      
-        └─styles
+        └─ styles
 ```
 
 - `MemoForm`에 메모 데이터를 추가하는 기능을 넣는다.
@@ -231,7 +230,7 @@ export default {
 #### 2.1.2 `MemoApp.vue`의 `script`부분
 
 ```vue
-// src/components/MemoForm.vue
+// src/components/MemoApp.vue
 
 <script>
   import MemoForm from "./MemoForm";
@@ -485,7 +484,7 @@ export default {
 
 ### 2.3. CRUD - Delete
 
-#### 2.3.1 `MemoApp.vue`의 `template`부분
+#### 2.3.1 `Memo.vue`의 `template`부분
 
 ```vue
 // src/components/Memo.vue
@@ -678,7 +677,11 @@ export default {
         this.$emit('updateMemo', { id, content })
         this.isEditing = false
       },
-
+	
+      // input태그를 마우스로 클릭하여 입력상태로 만든것을 포커스(focus)를 얻었다고 한다. 
+      // 그리고 입력상태를 떠난것을 포커스가 벗어났다고(blur) 한다.
+      // 즉 blur은 엘리먼트의 포커스가 해제되었을때 발생한다.
+      // focus가 해제되었을 경우에 수정이 안되게끔 설정한다.
       // blur 이벤트가 발생하면, 인풋 창이 사라지고 메모의 내용 또한 바뀌지 않은 것을 확인 할 수 있다.
       handleBlur () {
         this.isEditing = false;

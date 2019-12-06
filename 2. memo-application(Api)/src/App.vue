@@ -2,6 +2,8 @@
 
   <div id="app">
     <app-header :memo-count="memoCount" />
+
+    <!-- change이벤트가 발생하면 updateMemoCount이벤트를 호출한다. -->
     <memo-app @change="updateMemoCount" />
   </div>
 
@@ -24,6 +26,8 @@ export default {
     MemoApp
   },
   methods: {
+
+    // MemoApp에서 change이벤트가 발생되면 updateMemoCount가 실행된다.
     updateMemoCount (count) {
       this.memoCount = count
     }
