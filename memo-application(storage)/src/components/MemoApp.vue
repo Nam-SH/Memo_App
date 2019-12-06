@@ -6,8 +6,7 @@
   
     <ul class="memo-list">
       <!-- v-for을 활용해 memo의 수만큼 Memo컴포넌트를 렌더한다. -->
-      <memo v-for="memo in memos" :key="memo.id" :memo="memo" 
-      @deleteMemo="deleteMemo"  @updateMemo="updateMemo" />
+      <memo v-for="memo in memos" :key="memo.id" :memo="memo" @deleteMemo="deleteMemo"  @updateMemo="updateMemo" />
     </ul>
 
   </div>
@@ -45,6 +44,7 @@
         this.memos.push(payload)
         this.storeMemo()
       },
+      
       storeMemo() {
         // JSON.stringify() 메서드는 JavaScript 값이나 객체를 JSON 문자열로 변환한다. 
         const memosToString = JSON.stringify(this.memos)
@@ -52,7 +52,7 @@
       },
 
       deleteMemo(id) {
-
+        // Memo로 부터 받은 삭제할 memo_id를 받는다.
         // findIndex() 메서드는 주어진 판별 함수를 만족하는 배열의 첫 번째 요소에 대한 인덱스를 반환한다
         const targetIndex = this.memos.findIndex(v => v.id === id)
         console.log('deleteMemo => targetIndex:', targetIndex)

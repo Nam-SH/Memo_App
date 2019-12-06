@@ -45,6 +45,7 @@
     },
     methods: {
       deleteMemo () {
+        if (!window.confirm('삭제하실?')) return
 
         // Memo컴포넌트는 직접적인 삭제를 하지 않고, 삭제의 책임을 부모 컴포넌트(MemoApp)에 위임하되, 
         // 인자로 삭제하려는 고유ID를넘긴다.

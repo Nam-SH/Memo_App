@@ -2,7 +2,7 @@
 
   <div id="app">
     <app-header :memo-count="memoCount" />
-    <memo-app @change="updateMemoCount" />
+    <memo-app/>
   </div>
 
 </template>
@@ -22,11 +22,6 @@ export default {
   components: { 
     AppHeader,
     MemoApp
-  },
-  methods: {
-    updateMemoCount (count) {
-      this.memoCount = count
-    }
   },
 }
 </script>

@@ -690,97 +690,32 @@ export default {
 
 
 
-
-
-## 3. 서버와 API 연동
-
-### 3.0 API 서버 다운로드
-
-- https://github.com/CanDoVueJS/RESTful-api-server에 접속 후 `git clone`을 하거나, 
-- `memo-application`와 같은 위치에 있는 `RESTful-api-server`를 사용한다.
-- `cd RESTful-api-server`  =>  클론받은 프로젝트의 디렉토리로 이동한다.
-- `npm install`  =>  프로젝트에서 사용할 패키지를 설치한다.
-- `npm install -g sequelize-cli`  =>  Sequelize CLI를 전역으로 설치
-- `PORT=8000 npm run dev`  =>  서버를 실행한다.
-
-
-
-### 3.1 CRUD - Create
-
-#### 3.1.1 `MemoApp.vue`의 `script`부분
-
-```vue
-
-```
-
-#### 3.1.2`MemoForm.vue`의 `script`부분
-
-```vue
-
-```
-
-
-
-### 3.2 CRUD - Read
-
-#### 3.2.1 
-
-```vue
-
-```
-
-#### 3.2.2
-
-```vue
-
-```
-
-
-
-### 3.3 CRUD - Update
-
-#### 3.3.1 
-
-```vue
-
-```
-
-#### 3.3.2
-
-```vue
-
-```
-
-#### 3.3.3 
-
-```vue
-
-```
-
-
-
-### 3.4 CRUD - Delete
-
-#### 3.4.1 
-
-```vue
-
-```
-
-#### 3.4.2
-
-```vue
-
-```
-
-## 
-
 ## 4. 결과 모습
 
-### 4.1 
+### 4.1  기본화면(`home`)
 
-### 4.2 
+![1  basic](https://user-images.githubusercontent.com/50367487/70297894-2ae0dd80-1833-11ea-8024-77282aa51e58.PNG)
 
-### 4.3 
 
-### 4.4 
+
+### 4.2 생성 (`Create`)
+
+![2  create_read](https://user-images.githubusercontent.com/50367487/70297896-2b797400-1833-11ea-8141-2a3fa63d90ae.PNG)
+
+
+
+### 4.3 수정 (`Update`)
+
+![3  update](https://user-images.githubusercontent.com/50367487/70297898-2b797400-1833-11ea-9130-e351bec2cc4a.PNG)
+
+
+
+### 4.4 삭제  (`Delete`)
+
+#### 4.4.1 삭제 클릭(modal event 추가)
+
+![4  delete(modal event)](https://user-images.githubusercontent.com/50367487/70298024-9cb92700-1833-11ea-88a4-46f4712bba23.PNG)
+
+#### 4.4.1 삭제 전 후 비교
+
+![5  delete before,after](https://user-images.githubusercontent.com/50367487/70298025-9cb92700-1833-11ea-8d7a-9f3563068b0c.PNG)
