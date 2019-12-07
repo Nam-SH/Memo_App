@@ -1,5 +1,10 @@
 import axios from 'axios'
-import { FETCH_MEMOS, ADD_MEMO, DELETE_MEMO, UPDATE_MEMO } from './mutations-types'
+import { 
+  FETCH_MEMOS, 
+  ADD_MEMO, 
+  DELETE_MEMO, 
+  UPDATE_MEMO 
+} from './mutations-types'
 
 const memoAPICore = axios.create({
   baseURL: "http://localhost:8000/api/memos"

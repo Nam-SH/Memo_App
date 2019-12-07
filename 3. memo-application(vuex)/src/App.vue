@@ -1,8 +1,8 @@
 <template>
 
   <div id="app">
-    <app-header :memo-count="memoCount" />
-    <memo-app @change="updateMemoCount" />
+    <app-header/>
+    <memo-app/>
   </div>
 
 </template>

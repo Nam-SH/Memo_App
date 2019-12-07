@@ -1,6 +1,11 @@
-import { FETCH_MEMOS, ADD_MEMO, DELETE_MEMO, UPDATE_MEMO, 
-         SET_EDITING_ID, RESET_EDITING_ID
-        } from './mutations-types'
+import { 
+  FETCH_MEMOS, 
+  ADD_MEMO, 
+  DELETE_MEMO, 
+  UPDATE_MEMO,
+  SET_EDITING_ID, 
+  RESET_EDITING_ID
+} from './mutations-types'
 
 export default {
   [FETCH_MEMOS] (state, payload) {
@@ -24,10 +29,10 @@ export default {
   },
 
   [SET_EDITING_ID] (state, id) {
-    state.editing.Id = id
+    state.editingId = id
   },
 
   [RESET_EDITING_ID] (state) {
-    state.editing.Id = 0
+    state.editingId = 0
   }
 }

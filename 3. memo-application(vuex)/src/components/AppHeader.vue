@@ -21,13 +21,22 @@
 
 
 <style scoped>
-.app-header p {
-  float: right;
-  padding-top: 6px;
-  font-size: 18px;
-  vertical-align: bottom;
-}
-.app-header p strong {
-  color: #ff5a00;
-}
+  .app-header {
+    overflow: hidden;
+    padding: 52px 0 27px;
+  }
+  .app-header h1 {
+    float: left;
+    font-size: 24px;
+    text-align: center;
+  }
+  .app-header p {
+    float: right;
+    padding-top: 6px;
+    font-size: 18px;
+    vertical-align: bottom;
+  }
+  .app-header p strong {
+    color: #ff5a00;
+  }
 </style>
