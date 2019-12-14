@@ -27,7 +27,7 @@
 # 1. 환경 구축
 $ vue init webpack-simple memo-application
 
-# 2. 파일 이동 및 필요모듈 설치
+# 2. 폴더 이동 및 필요모듈 설치
 $ cd memo-application
 $ cd npm install 	# or npm i <필요 모듈>
 
