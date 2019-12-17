@@ -5,9 +5,10 @@
       <memo v-for="memo in memos"
             :key="memo.id"
             :memo="memo"
-            :editingId="editingId"
-            @updateMemo="updateMemo"
             @deleteMemo="deleteMemo"
+
+            @updateMemo="updateMemo"
+            :editingId="editingId"
             @setEditingId="SET_EDITING_ID"
             @resetEditingId="RESET_EDITING_ID" />
     </ul>
@@ -33,29 +34,22 @@
       this.fetchMemos()
     },
     methods: {
-
       ...mapActions([
         'fetchMemos',
         'addMemo',
         'deleteMemo',
         'updateMemo',
       ]),
-
       ...mapMutations([
         SET_EDITING_ID,
         RESET_EDITING_ID,
       ])
-
     },
     computed: {
-      ...mapState([
-        'memos',
-        'editingId',
-      ])
+      ...mapState([ 'memos', 'editingId' ])
     },
   }
 </script>
-
 
 <style scoped>
   .memo-list {

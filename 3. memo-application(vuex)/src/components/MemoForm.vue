@@ -27,8 +27,8 @@
       resetFields() {
         this.title = this.content = ''
       },
+      
       addMemo() {
-        
         const { title, content } = this
 
         if (title === '') return

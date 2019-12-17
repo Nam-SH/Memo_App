@@ -1,4 +1,4 @@
-# memo-application
+# memo-application(Vuex)
 
 > NAM-SH's Vue.js project
 
@@ -6,185 +6,72 @@
 
 ## 0. 서론
 
-- 해당 프로젝트는 `vue`를 활용해 메모 어플리케이션을 만다는 것이다.
-- `Bootstrap`과 `css`를 활용해 디자인을 구성하였다.
+- 해당 프로젝트는 `vue`를 활용해 메모 어플리케이션을 만드는 것이다.
 - 카멜케이스(`camelCase`), 파스칼케이스(`PascalCase`), 스네이크 케이스(`snake_case`), 케밥 케이스(`kebab-case`) 중 `convention`인 케밥 케이스(`kebab-case`)를 사용하였다.
-- 해당 메모 어플리케이션은 Storage를 사용하지 않고 API서버를 사용했으며, Storage의 수정된 부분만 작성하였다.
+- 이전 까지의 구조에서는 새로운 기능을 추가할때 아래와 같은 문제점이 발생하였다.
+  - 여러 개의 컴포넌트가 같은 상태(데이터)에 의존한다. 이런 경우 지나치게 중첩된 컴포넌트를 통과하는 props는 점점 늘어날 것이고 장황해질 것이다.
+  - 서로 다른 컴포넌트의 액션이 동일한 상태를 변경 또는 반영해야 할 수 있다.
+- 위와 같은 문제를 해결하기 위해 Vuex라는 라이브러리를 사용한다.
+- 해당 코드는 memo-application (API)에서 수정된 부분만 작성하였다.
 
 
 
-## 1. 프로젝트 생성
+## 1. Vuex 설치 및 기본세팅
 
-### 1.1 컴포넌트 구조
-
-![image](https://user-images.githubusercontent.com/50367487/69913110-02de2c80-1477-11ea-8531-7dd631115c06.png)
-
-
-
-### 1.2 프로젝트 구성
+### 1.1 Vuex 라이브러리 설치
 
 ```bash
-# 1. 환경 구축
-$ vue init webpack-simple memo-application
+$ npm install vuex --save
+```
 
-# 2. 파일 이동 및 필요모듈 설치
-$ cd memo-application
-$ cd npm install 	# or npm i <필요 모듈>
+### 1.2 store 디렉터리 구조
 
-# 3. 서버 실행
-$ cd npm run dev
+```
+└─src
+    │  App.vue
+    │  main.js
+    │  
+    ├─store
+    │      actions.js
+    │      getters.js
+    │      index.js
+    │      mutations-types.js
+    │      mutations.js
+    │      states.js
+```
+
+### 1.3 `store/index.js` 작성
+
+```
+
+```
+
+### 1.4 store을 main.js에 삽입
+
+```
+
 ```
 
 
 
-### 1.3 `reset.css` 생성
-
-```
-# 파일구조
-└─memo-application
-    │  README.md
-    │  ...               
-    └─src
-        │  App.vue
-        │  ...
-        ├─ components
-        │      ...
-        └─ styles
-                reset.css
-```
-
-```css
-// src/styles/reset.css
-
-@import "https://use.fontawesome.com/releases/v5.6.3/css/all.css";
-body {
-  background-color: #f5f5f5;
-}
-
-html, body, div, input, fieldset, form, h1, p, textarea, button {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-}
-
-textarea {
-  border: none;
-  resize: none;
-}
-
-li {
-  list-style: none;
-}
-```
-
-#### 1.3.1 `App.vue`의 ` style`에  `reset.css` 입력
-
-```vue
-// src/App.vue
-
-...
-<style>
-@import "./styles/reset.css";
-
-#app {
-  width: 560px;
-  margin: 0 auto;
-}
-
-</style>
-```
+## 2. Vuex에 데이터 저장한 후 노출 기능 구현하기
 
 
 
-### 1.4 헤더 컴포넌트 생성(`AppHeader`)
-
-```
-# 파일구조
-└─memo-application
-    │  README.md
-    │  ...
-    │                      
-    └─ src
-        │  App.vue
-        │  ... 
-        ├─ components
-        │      AppHeader.vue
-        │      ...
-        └─ styles
-```
-
-```vue
-// src/components/AppHeader.vue
-
-<template>
-  <div class="app-header">
-    <h1>메모 애플리케이션</h1>
-  </div>
-</template>
-
-
-<script>
-  export default {
-    name: 'AppHeader',
-  };
-</script>
-
-
-<style scoped>
-.app-header {
-  overflow: hidden;
-  padding: 52px 0 27px;
-}
-.app-header h1 {
-  float: left;
-  font-size: 24px;
-  text-align: center;
-}
-</style>
-```
-
-#### 1.4.1 `App.vue` 파일의 `script`영역에  `AppHeader`입력
-
-```vue
-// src/App.vue
-
-<script>
-import AppHeader from './components/AppHeader';
-...
-
-export default {
-  name: 'app',
-  components: { 
-    AppHeader,
-    ...
-  }
-}
-</script>
-```
-
-#### 1.4.2 `App.vue`파일의 `template`영역에 `AppHeader`입력
-
-```vue
-// src/App.vue
-
-<template>
-
-  <div id="app">
-    <app-header/>
-    ...
-  </div>
-
-</template>
-```
+## 3. Vuex에 메모 데이터 추가하기
 
 
 
-### 1.5  중간결과
-
-![image](https://user-images.githubusercontent.com/50367487/69928022-aa05a700-14fd-11ea-8399-84975d15d37c.png)
+## 4. Vuex에 메모 데이터 삭제 기능 구현하기
 
 
 
-## 2. API
+## 5. Vuex에 데이터 수정 기능 구현하기
 
+
+
+## 6. 메모의 개수 구현하기
+
+
+
+## 7. 수정버튼 focus 및 blur 구현하기

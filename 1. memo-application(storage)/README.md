@@ -1,4 +1,4 @@
-# memo-application
+# memo-application(Storage)
 
 > NAM-SH's Vue.js project
 
@@ -6,8 +6,7 @@
 
 ## 0. 서론
 
-- 해당 프로젝트는 `vue`를 활용해 메모 어플리케이션을 만다는 것이다.
-- `Bootstrap`과 `css`를 활용해 디자인을 구성하였다.
+- 해당 프로젝트는 `vue`를 활용해 메모 어플리케이션을 만드는 것이다.
 - 카멜케이스(`camelCase`), 파스칼케이스(`PascalCase`), 스네이크 케이스(`snake_case`), 케밥 케이스(`kebab-case`) 중 `convention`인 케밥 케이스(`kebab-case`)를 사용하였다.
 - 데이터를 저장하는 곳은 서버의 Storage를 사용하였다.
 

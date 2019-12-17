@@ -1,26 +1,34 @@
-¦¦¦¡memo-application
-    ¦¢  .babelrc
-    ¦¢  .editorconfig
-    ¦¢  .gitignore
-    ¦¢  index.html
-    ¦¢  package-lock.json
-    ¦¢  package.json
-    ¦¢  README.md
-    ¦¢  webpack.config.js
-    ¦¢                      
-    ¦¦¦¡src
-        ¦¢  App.vue
-        ¦¢  main.js
-        ¦¢  
-        ¦§¦¡assets
-        ¦¢      logo.png
-        ¦¢      
-        ¦§¦¡components
-        ¦¢      AppHeader.vue
-        ¦¢      Memo.vue
-        ¦¢      MemoApp.vue
-        ¦¢      MemoForm.vue
-        ¦¢      
-        ¦¦¦¡styles
-                reset.css
-                
+¦¢  .babelrc
+¦¢  .editorconfig
+¦¢  .gitignore
+¦¢  index.html
+¦¢  package-lock.json
+¦¢  package.json
+¦¢  README.md
+¦¢  tree_view.txt
+¦¢  webpack.config.js
+¦¢     
+¦¦¦¡src
+    ¦¢  App.vue
+    ¦¢  main.js
+    ¦¢  
+    ¦§¦¡assets
+    ¦¢      logo.png
+    ¦¢      
+    ¦§¦¡components
+    ¦¢      AppHeader.vue
+    ¦¢      Memo.vue
+    ¦¢      MemoApp.vue
+    ¦¢      MemoForm.vue
+    ¦¢      
+    ¦§¦¡store
+    ¦¢      actions.js
+    ¦¢      getters.js
+    ¦¢      index.js
+    ¦¢      mutations-types.js
+    ¦¢      mutations.js
+    ¦¢      states.js
+    ¦¢      
+    ¦¦¦¡styles
+            reset.css
+            

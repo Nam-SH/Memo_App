@@ -1,7 +1,6 @@
 <template>
   <li class="memo-item">
     <strong> {{ memo.title }} </strong>
-
     <p @dblclick="handleDblClick"> 
       <template v-if="!isEditing">{{ memo.content }}</template>  
       <input v-else 
@@ -16,47 +15,45 @@
 </template>
 
 <script>
-  export default {
-    name: "Memo",
-    props: {
-      memo: {
-        type: Object
-      },
-      editingId: {
-        type: Number
-      }
+export default {
+  name: "Memo",
+  props: {
+    memo: {
+      type: Object
     },
-    computed: {
-      isEditing () {
-        return this.memo.id === this.editingId
-      }
+    editingId: {
+      type: Number
+    }
+  },
+  computed: {
+    isEditing () {
+      return this.memo.id === this.editingId
+    }
+  },
+  methods: {
+    deleteMemo () {
+      const id = this.memo.id
+      this.$emit('deleteMemo', id)
     },
-    methods: {
-    
-      deleteMemo () {
-        const id = this.memo.id
-        this.$emit('deleteMemo', id)
-      },
-      handleDblClick () {
-        this.$emit('setEditingId', this.memo.id)
-        this.$nextTick(() => {
-          this.$refs.content.focus()
-        })
-      },
-      handleBlur () {
-        this.$emit('resetEditingId')
-      },
-      updateMemo (e) {
-        const id = this.memo.id
-        const content = e.target.value.trim()
-        if (content === '') return
-        this.$emit('updateMemo', { id, content })
-        this.$refs.content.blur()
-      },
+    handleDblClick () {
+      this.$emit('setEditingId', this.memo.id)
+      this.$nextTick(() => {
+        this.$refs.content.focus()
+      })
+    },
+    handleBlur () {
+      this.$emit('resetEditingId')
+    },
+    updateMemo (e) {
+      const id = this.memo.id
+      const content = e.target.value.trim()
+      if (content === '') return
+      this.$emit('updateMemo', { id, content })
+      this.$refs.content.blur()
     }
   }
+  }
 </script>
-
 
 <style scoped>
   .memo-item {

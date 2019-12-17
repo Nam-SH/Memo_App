@@ -48,7 +48,6 @@ export function updateMemo ({ commit }, payload) {
   })
 }
 
-
 export default {
   fetchMemos,
   addMemo,
