@@ -6,7 +6,6 @@
             :key="memo.id"
             :memo="memo"
             @deleteMemo="deleteMemo"
-            
             @updateMemo="updateMemo"
             @setEditingId="SET_EDITING_ID"
             @resetEditingId="RESET_EDITING_ID" 

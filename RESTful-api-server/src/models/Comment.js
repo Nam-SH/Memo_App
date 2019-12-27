@@ -34,7 +34,6 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
   });
   Comment.associate = function (models) {
-    Comment.belongsTo(models.Post);
     Comment.belongsTo(models.User);
   };
   Comment.prototype.toJSON = function () {
@@ -42,7 +41,6 @@ module.exports = (sequelize, DataTypes) => {
     value.user = value.User;
     delete value.User;
     delete value.UserId;
-    delete value.PostId;
     return value;
   };
   Comment.prototype.isMyComment = function (user) {
