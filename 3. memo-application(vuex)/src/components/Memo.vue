@@ -52,7 +52,7 @@ export default {
       this.$refs.content.blur()
     }
   }
-  }
+}
 </script>
 
 <style scoped>

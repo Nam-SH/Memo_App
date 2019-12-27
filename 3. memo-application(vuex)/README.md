@@ -388,54 +388,186 @@ export function updateMemo ({ commit }, payload) {
 ## 6. 메모의 개수 구현하기
 
 ```js
+// src/store/states.js
+
+export default {
+  ...
+  editingId: 0
+}
+```
+
+```js
 // src/store/mutations-types.js
 
+...
+export const SET_EDITING_ID = 'SET_EDITING_ID';
 
+export const RESET_EDITING_ID = 'RESET_EDITING_ID';
 ```
 
 ```js
 // src/store/mutations.js
 
+export default {
+  ...
+    
+  [SET_EDITING_ID] (state, id) {
+    state.editingId = id
+  },
 
+  [RESET_EDITING_ID] (state) {
+    // 수정 중인 데이터가 없는 경우는 임의의 초기화값 0으로 설정한다.
+    state.editingId = 0
+  }
+}
 ```
 
-```js
-// src/store/actions.js
+```vue
+// src/components/Memo.vue
 
-
+<script>
+export default {
+  name: "Memo",
+  props: {
+    ...
+    // 1. 부모 컴포넌트로부터 내려받은 editingId에 대한 props를 추가한다.
+    editingId: {
+      type: Number
+    }
+  },
+    
+  // 2. 부모로부터 내려받은 props를 통해 현재의 메모가 수정 중인 여부를 computed를 통해 계산한다.
+  computed: {
+    isEditing () {
+      return this.memo.id === this.editingId
+    }
+  },
+  methods: {
+    deleteMemo () {
+      const id = this.memo.id
+      this.$emit('deleteMemo', id)
+    },
+    handleDblClick () {
+      this.$emit('setEditingId', this.memo.id)
+      this.$nextTick(() => {
+        this.$refs.content.focus()
+      })
+    },
+    handleBlur () {
+      this.$emit('resetEditingId')
+    },
+    updateMemo (e) {
+      const id = this.memo.id
+      const content = e.target.value.trim()
+      if (content === '') return
+      this.$emit('updateMemo', { id, content })
+      this.$refs.content.blur()
+    }
+  }
+  }
+</script>
 ```
 
 ```vue
 // src/components/MemoApp.vue
 
+<template>
+  <div class="memo-app">
+    ...
+    <ul class="memo-list">
+      <memo v-for="memo in memos"
+            ...
+            :editingId="editingId"  />
+    </ul>
+  </div>
+</template>
 
+
+<script>
+  ...
+
+  export default {
+    name: "MemoApp",
+    ...
+    computed: {
+      // 1. editingId 값을 mapState를 통해 컴포넌트에 등록한다.
+      ...mapState([ 'memos', 'editingId' ])
+    },
+  }
+</script>
 ```
 
+```vue
+// src/components/Memo.vue
 
-
-## 7. 수정버튼 focus 및 blur 구현하기
-
-```js
-// src/store/mutations-types.js
-
-
-```
-
-```js
-// src/store/mutations.js
-
-
-```
-
-```js
-// src/store/actions.js
-
-
+<script>
+export default {
+  name: "Memo",
+  ...,
+  methods: {
+    ...
+    // 1. 컴포넌트 내의 isEditing 데이터를 수정하는 코드를 삭제한다.
+    handleDblClick () {
+      this.$emit('setEditingId', this.memo.id)
+      this.$nextTick(() => {
+        this.$refs.content.focus()
+      })
+    },
+        
+    // 2. 컴포넌트 내의 isEditing 데이터를 수정하는 코드를 삭제한다.
+    // 3. blur 이벤트가 발생될 때, ID값을 초기화시켜주는 부모의 이벤트 리스너를 실행한다.
+    handleBlur () {
+      this.$emit('resetEditingId')
+    },
+    updateMemo (e) {
+      const id = this.memo.id
+      const content = e.target.value.trim()
+      if (content === '') return
+        
+      // 4. 컴포넌트 내의 isEditing 데이터를 수정하는 코드를 삭제한다.
+      this.$emit('updateMemo', { id, content })
+      // 5. 수정완료 후, 인풋에서 포커스를 제거한다.
+      this.$refs.content.blur()
+    }
+  }
+  }
+</script>
 ```
 
 ```vue
 // src/components/MemoApp.vue
 
+<template>
+  <div class="memo-app">
+    ...
+    <ul class="memo-list">
+      <!-- 2. 자식 컴포넌트인 메모 컴포넌트에 mapMutations 헬퍼 함수로 매핑된 각각의 함수를 이벤트 리스너로 			  등록한다. -->
+      <memo v-for="memo in memos"
+           ...
+            @setEditingId="SET_EDITING_ID"
+            @resetEditingId="RESET_EDITING_ID"
+            />
+    </ul>
+  </div>
+</template>
 
+
+<script>
+  ...,
+  import { SET_EDITING_ID, RESET_EDITING_ID } from '../store/mutations-types'
+
+  export default {
+    name: "MemoApp",
+    ...,
+    methods: {
+      ...,
+      // 1. mapMutations 헬퍼 함수를 통해 수정 중인 ID값을 설정/해제하는 변이 함수를 컴포넌트에 매핑한다.
+      ...mapMutations([
+        SET_EDITING_ID,
+        RESET_EDITING_ID,
+      ])
+    }
+  }
+</script>
 ```
 

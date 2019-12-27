@@ -6,11 +6,12 @@
             :key="memo.id"
             :memo="memo"
             @deleteMemo="deleteMemo"
-
+            
             @updateMemo="updateMemo"
-            :editingId="editingId"
             @setEditingId="SET_EDITING_ID"
-            @resetEditingId="RESET_EDITING_ID" />
+            @resetEditingId="RESET_EDITING_ID" 
+            :editingId="editingId"
+            />
     </ul>
   </div>
 </template>
