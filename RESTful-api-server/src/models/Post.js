@@ -2,14 +2,24 @@ const format = require('date-fns/format');
 const addHour = require('date-fns/add_hours');
 
 module.exports = (sequelize, DataTypes) => {
-  const Comment = sequelize.define('Comment', {
-    contents: {
+  const Post = sequelize.define('Post', {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: {
           args: [1, 255],
-          msg: '댓글은 최소 1자 이상 최대 255자 이하여야 합니다.',
+          msg: '게시물의 제목은 최소 1자 이상 최대 255자 이하여야 합니다.',
+        },
+      },
+    },
+    contents: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: {
+          args: [1, 500],
+          msg: '게시물의 내용은 최소 1자 이상 최대 500자 이하여야 합니다.',
         },
       },
     },
@@ -30,24 +40,32 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
   }, {
-    tableName: 'Comments',
+    tableName: 'Posts',
     timestamps: true,
   });
-  Comment.associate = function (models) {
-    Comment.belongsTo(models.Post);
-    Comment.belongsTo(models.User);
+  Post.associate = function (models) {
+    // associations can be defined here
+    Post.belongsTo(models.User);
+    Post.hasMany(models.Comment);
   };
-  Comment.prototype.toJSON = function () {
+  Post.prototype.toJSON = function () {
     const value = Object.assign({}, this.get());
     value.user = value.User;
+    value.comments = value.Comments;
+
     delete value.User;
+    delete value.Comments;
     delete value.UserId;
-    delete value.PostId;
+
     return value;
   };
-  Comment.prototype.isMyComment = function (user) {
+  Post.prototype.isMyPost = function (user) {
     const value = Object.assign({}, this.get());
     return user.id === value.UserId;
   };
-  return Comment;
+  Post.prototype.hasComment = async function (commentId) {
+    const comments = await this.getComments();
+    return comments.some(comment => comment.dataValues.id.toString() === commentId);
+  };
+  return Post;
 };

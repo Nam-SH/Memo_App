@@ -6,8 +6,9 @@ import store from './store'
 
 new Vue({
   el: '#app',
-
+  
   // 2. Vue 인스턴스에 store 옵션으로 등록한다.
   store,
+  
   render: h => h(App)
 })

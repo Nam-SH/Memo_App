@@ -2,19 +2,6 @@
 
 var Sequelize = require('sequelize');
 
-/**
- * Actions summary:
- *
- * createTable "Comments", deps: [Posts, Users]
- * changeColumn "title" on table "Posts"
- * changeColumn "title" on table "Posts"
- * changeColumn "title" on table "Posts"
- * changeColumn "contents" on table "Posts"
- * changeColumn "contents" on table "Posts"
- * changeColumn "contents" on table "Posts"
- *
- **/
-
 var info = {
     "revision": 2,
     "name": "noname",

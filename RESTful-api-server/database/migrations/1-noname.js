@@ -2,14 +2,6 @@
 
 var Sequelize = require('sequelize');
 
-/**
- * Actions summary:
- *
- * createTable "Users", deps: []
- * createTable "Posts", deps: [Users]
- *
- **/
-
 var info = {
     "revision": 1,
     "name": "noname",

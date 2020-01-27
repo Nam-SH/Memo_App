@@ -2,16 +2,6 @@
 
 var Sequelize = require('sequelize');
 
-/**
- * Actions summary:
- *
- * createTable "Memos", deps: []
- * changeColumn "name" on table "Users"
- * changeColumn "name" on table "Users"
- * changeColumn "email" on table "Users"
- *
- **/
-
 var info = {
     "revision": 3,
     "name": "noname",
@@ -32,9 +22,9 @@ var migrationCommands = [{
                     "allowNull": false
                 },
                 "title": {
-                    "type": Sequelize.STRING,
-                    "field": "title",
-                    "allowNull": false
+                  "type": Sequelize.STRING,
+                  "field": "title",
+                  "allowNull": false
                 },
                 "content": {
                     "type": Sequelize.STRING,
